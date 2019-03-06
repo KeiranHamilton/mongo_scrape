@@ -46,9 +46,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
-//mongoose.connect(
-//"mongodb://heroku_jmv816f9:5j1nd4taq42hi29bfm5hobeujd@ds133192.mlab.com:33192/heroku_jmv816f9"
-//);
+mongoose.connect(
+  "mongodb://keiranhamilton:Love4kalli*@ds349175.mlab.com:49175/heroku_dg4gxr28"
+);
 //var MONGODB_URI = "mongodb://localhost/mongoHeadlines";
 //mongoose.connect(MONGODB_URI);
 // Show any mongoose errors
@@ -252,13 +252,13 @@ app.delete("/notes/delete/:note_id/:article_id", function(req, res) {
   });
 });
 
-var MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+//var MONGODB_URI =
+//process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+//mongoose.Promise = Promise;
+//mongoose.connect(MONGODB_URI);
 
 // Listen on port
 app.listen(port, function() {
