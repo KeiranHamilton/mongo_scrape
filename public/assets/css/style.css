@@ -1,17 +1,29 @@
 body {
-    background-image: url("/assets/images/background.jpg");
-    padding-top: 70px;
+  background-image: url("/assets/images/background.jpg");
+  padding-top: 70px;
 }
 
 .deleteNote {
-	display: inline-block;
+  display: inline-block;
 }
 
 .previousNotes {
-    display: inline-block;
-    width: 90%
+  display: inline-block;
+  width: 90%;
 }
 
 #scrape {
-    margin: 8px 0px;
+  margin: 8px 0px;
+}
+
+.jumbotron {
+  background-image: url("https://static01.nyt.com/images/2015/04/19/magazine/19search1/19search1-articleLarge.jpg?quality=75&auto=webp&disable=upscale");
+}
+
+h1 {
+  font: white;
+}
+
+h1 {
+  background-color: black;
 }

@@ -14,10 +14,10 @@ var request = require("request");
 var cheerio = require("cheerio");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
-mongoose.Promise = Promise;
+mongoose.Promise = global.Promise;
 
 //Define port
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -47,11 +47,20 @@ app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
 mongoose.connect(
-  "mongodb://keiranhamilton:Love4kalli*@ds349175.mlab.com:49175/heroku_dg4gxr28"
+  "mongodb://heroku_jmv816f9:5j1nd4taq42hi29bfm5hobeujd@ds133192.mlab.com:33192/heroku_jmv816f9"
 );
-//var MONGODB_URI = "mongodb://localhost/mongoHeadlines";
-//mongoose.connect(MONGODB_URI);
+//mongoose.connect("mongodb://localhost/mongoscraper");
+var db = mongoose.connection;
+
 // Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 
 // Routes
 // ======
@@ -251,14 +260,6 @@ app.delete("/notes/delete/:note_id/:article_id", function(req, res) {
     }
   });
 });
-
-//var MONGODB_URI =
-//process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-//mongoose.Promise = Promise;
-//mongoose.connect(MONGODB_URI);
 
 // Listen on port
 app.listen(port, function() {
