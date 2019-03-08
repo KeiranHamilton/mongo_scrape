@@ -5,7 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
 
-// Requiring Note and Article models
+// Require Note and Article models
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
@@ -13,13 +13,12 @@ var Article = require("./models/Article.js");
 var request = require("request");
 var cheerio = require("cheerio");
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-mongoose.Promise = global.Promise;
+// JavaScript ES6 Promises
+mongoose.Promise = Promise;
 
 //Define port
 var port = process.env.PORT || 3000;
 
-// Initialize Express
 var app = express();
 
 // Use morgan and body parser with our app
@@ -131,7 +130,7 @@ app.get("/scrape", function(req, res) {
   // Tell the browser that we finished scraping the text
 });
 
-// This will get the articles we scraped from the mongoDB
+// This will get the articles we scraped from  mongoDB
 app.get("/articles", function(req, res) {
   // Grab every doc in the Articles array
   Article.find({}, function(error, doc) {
@@ -148,7 +147,7 @@ app.get("/articles", function(req, res) {
 
 // Grab an article by it's ObjectId
 app.get("/articles/:id", function(req, res) {
-  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  // Using id parameter, prepare a query that finds the matching one in our db...
   Article.findOne({ _id: req.params.id })
     // ..and populate all of the notes associated with it
     .populate("note")
